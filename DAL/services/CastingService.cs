@@ -31,7 +31,7 @@ namespace DAL.services
                 Id = (int)reader["Id"],
                 MovieId = (int)reader["MovieId"],
                 PersonId = (int)reader["PersonId"],
-                Role = reader["MovieId"].ToString()
+                Role = reader["Role"].ToString()
             };
         }
 
@@ -46,13 +46,13 @@ namespace DAL.services
             return casting;
         }
 
-        public IEnumerable<Casting> GetByMovieId(int Id)
+        public Casting GetByMovieId(int Id)
         {
             Command command = new Command("SELECT * FROM Casting WHERE MovieId = @Id");
             command.AddParameter("Id", Id);
 
             _Connection.Open();
-            IEnumerable<Casting> casting = _Connection.ExecuteReader(command, Converter).ToList();
+            Casting casting = _Connection.ExecuteReader(command, Converter).FirstOrDefault();
             _Connection.Close();
 
             return casting;

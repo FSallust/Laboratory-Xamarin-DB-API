@@ -11,6 +11,6 @@ namespace DAL.interfaces
     {
         IEnumerable<Casting> GetAll();
 
-        IEnumerable<Casting> GetByMovieId(int Id);
+        Casting GetByMovieId(int Id);
     }
 }

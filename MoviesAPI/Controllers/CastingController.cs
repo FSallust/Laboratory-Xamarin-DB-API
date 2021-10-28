@@ -30,7 +30,7 @@ namespace MoviesAPI.Controllers
         [HttpGet("{Id}")]
         public IActionResult GetPersonByMovieId(int Id)
         {
-            return Ok(_service.GetByMovieId(Id).Select(m => m.ToAPI()));
+            return Ok(_service.GetByMovieId(Id).ToAPI());
         }
     }
 }
